@@ -1,0 +1,81 @@
+# 抽奖次数限制开关，true 为开启，false 为关闭
+lottery-count-limit-enabled: true
+# 普通玩家最大抽奖次数，-1 表示无限制
+max-lottery-count: 3
+# OP 玩家最大抽奖次数
+op-max-lottery-count: 10
+# 会员玩家最大抽奖次数
+member-max-lottery-count: 5
+# 抽奖冷却时间（秒）
+lottery-cooldown: 60
+# 抽奖音效
+lottery-sound: BLOCK_NOTE_BLOCK_PLING
+# 抽奖粒子特效
+lottery-particle: VILLAGER_HAPPY
+# 是否开启屏幕震动
+lottery-screen-shake: true
+# 支持的语言列表
+supported-languages:
+  - en
+  - zh_CN
+# 普通玩家奖品列表
+prizes:
+  - probability: 20.0
+    commands:
+      - "give %player_name% diamond 1"
+      - "tellraw %player_name% [{\"text\":\"你获得了一颗钻石！\",\"color\":\"green\"}]"
+  - probability: 30.0
+    commands:
+      - "give %player_name% gold_ingot 3"
+      - "effect give %player_name% speed 60 1"
+  - probability: 50.0
+    commands:
+      - "give %player_name% iron_ingot 5"
+      - "title %player_name% subtitle [{\"text\":\"获得 5 个铁锭\",\"color\":\"yellow\"}]"
+# OP 玩家奖品列表
+op-prizes:
+  - probability: 30.0
+    commands:
+      - "give %player_name% netherite_ingot 2"
+      - "tellraw %player_name% [{\"text\":\"你获得了两个下界合金锭！\",\"color\":\"green\"}]"
+  - probability: 40.0
+    commands:
+      - "give %player_name% enchanted_golden_apple 1"
+      - "effect give %player_name% regeneration 120 2"
+  - probability: 30.0
+    commands:
+      - "give %player_name% diamond_block 1"
+      - "title %player_name% subtitle [{\"text\":\"获得一个钻石块\",\"color\":\"yellow\"}]"
+# 会员玩家奖品列表
+member-prizes:
+  - probability: 25.0
+    commands:
+      - "give %player_name% emerald 5"
+      - "tellraw %player_name% [{\"text\":\"你获得了五颗绿宝石！\",\"color\":\"green\"}]"
+  - probability: 35.0
+    commands:
+      - "give %player_name% diamond_sword 1"
+      - "effect give %player_name% strength 60 1"
+  - probability: 40.0
+    commands:
+      - "give %player_name% gold_block 1"
+      - "title %player_name% subtitle [{\"text\":\"获得一个金块\",\"color\":\"yellow\"}]"
+# 保底抽奖次数
+guarantee-count: 10
+# 保底奖品命令列表
+guarantee-commands:
+  - "give %player_name% diamond_block 1"
+  - "tellraw %player_name% [{\"text\":\"你触发了保底，获得一个钻石块！\",\"color\":\"green\"}]"
+# 存储方式，sqlite 或 mysql
+storage-type: sqlite
+# MySQL 数据库配置
+mysql:
+  host: localhost
+  port: 3306
+  database: lottery
+  username: root
+  password: password
+# OP 权限名称
+op-permission: lottery.op
+# 会员权限名称
+member-permission: lottery.member    
